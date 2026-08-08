@@ -18,6 +18,7 @@ class CopyPortfolioReferencePlugin {
               "public",
               "portfolio-reference.html",
             );
+            if (!fs.existsSync(referencePath)) return;
             const reference = fs.readFileSync(referencePath);
             compilation.emitAsset(
               "portfolio-reference.html",
@@ -30,28 +31,39 @@ class CopyPortfolioReferencePlugin {
   }
 }
 
-// Copies public/hero-photo.* into the build output if the user has added one.
-class CopyHeroPhotoPlugin {
+// Copies known optional assets (hero photo, favicon) from public/ into the
+// build output if the user has added them — otherwise skipped silently.
+const OPTIONAL_PUBLIC_ASSETS = [
+  "hero-photo.jpg",
+  "hero-photo.png",
+  "favicon.ico",
+  "favicon.png",
+];
+
+class CopyOptionalAssetsPlugin {
   apply(compiler) {
-    compiler.hooks.thisCompilation.tap("CopyHeroPhotoPlugin", (compilation) => {
-      compilation.hooks.processAssets.tap(
-        {
-          name: "CopyHeroPhotoPlugin",
-          stage: compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
-        },
-        () => {
-          ["hero-photo.jpg", "hero-photo.png"].forEach((filename) => {
-            const photoPath = path.join(__dirname, "public", filename);
-            if (!fs.existsSync(photoPath)) return;
-            const photo = fs.readFileSync(photoPath);
-            compilation.emitAsset(
-              filename,
-              new compiler.webpack.sources.RawSource(photo),
-            );
-          });
-        },
-      );
-    });
+    compiler.hooks.thisCompilation.tap(
+      "CopyOptionalAssetsPlugin",
+      (compilation) => {
+        compilation.hooks.processAssets.tap(
+          {
+            name: "CopyOptionalAssetsPlugin",
+            stage: compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+          },
+          () => {
+            OPTIONAL_PUBLIC_ASSETS.forEach((filename) => {
+              const assetPath = path.join(__dirname, "public", filename);
+              if (!fs.existsSync(assetPath)) return;
+              const asset = fs.readFileSync(assetPath);
+              compilation.emitAsset(
+                filename,
+                new compiler.webpack.sources.RawSource(asset),
+              );
+            });
+          },
+        );
+      },
+    );
   }
 }
 
@@ -85,7 +97,7 @@ module.exports = {
   },
   plugins: [
     new CopyPortfolioReferencePlugin(),
-    new CopyHeroPhotoPlugin(),
+    new CopyOptionalAssetsPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
