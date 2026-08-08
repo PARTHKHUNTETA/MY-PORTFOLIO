@@ -1160,11 +1160,22 @@ a:focus-visible {
     border-radius: 16px;
   }
   .hero-topbar {
-    padding: 20px 22px;
+    padding: 16px 18px;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+  .brand {
+    font-size: 16px;
+  }
+  .hero-controls {
+    gap: 6px;
   }
   .nav {
+    order: 3;
+    width: 100%;
     gap: 14px;
     font-size: 11px;
+    flex-wrap: wrap;
   }
   .hero-body {
     grid-template-columns: 1fr;
