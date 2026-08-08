@@ -1,3 +1,4 @@
+import { FormattedMessage, useIntl } from "react-intl";
 import { portfolio } from "../utils/content";
 import { SectionLabel, useReveal } from "./SectionUtils";
 
@@ -71,19 +72,27 @@ function ProjectDiagram({ kind }) {
 
 export function Projects() {
   useReveal();
+  const intl = useIntl();
 
   return (
     <section className="section" id="projects">
       <div className="container">
         <div className="projects-heading reveal">
           <div>
-            <SectionLabel>Selected work</SectionLabel>
+            <SectionLabel>
+              <FormattedMessage id="projects.label" />
+            </SectionLabel>
             <h2>
-              Side projects —<br />
-              <em>all live.</em>
+              <FormattedMessage id="projects.title" />
+              <br />
+              <em>
+                <FormattedMessage id="projects.titleEm" />
+              </em>
             </h2>
           </div>
-          <p>// AI · full-stack</p>
+          <p>
+            <FormattedMessage id="projects.meta" />
+          </p>
         </div>
         <div className="project-grid">
           {portfolio.projects.map((project) => (
@@ -98,9 +107,11 @@ export function Projects() {
                 <ProjectDiagram kind={project.kind} />
               </div>
               <div className="project-content">
-                <p className="project-category">{project.category}</p>
+                <p className="project-category">
+                  {intl.formatMessage({ id: project.categoryId })}
+                </p>
                 <h3>{project.name}</h3>
-                <p>{project.description}</p>
+                <p>{intl.formatMessage({ id: project.descriptionId })}</p>
                 <div className="tags">
                   {project.stack.map((item) => (
                     <span key={item}>{item}</span>
@@ -113,7 +124,7 @@ export function Projects() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Live ↗
+                    <FormattedMessage id="projects.live" />
                   </a>
                   <a
                     className="button ghost"
@@ -121,7 +132,7 @@ export function Projects() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Code ↗
+                    <FormattedMessage id="projects.code" />
                   </a>
                 </div>
               </div>

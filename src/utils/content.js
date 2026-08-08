@@ -1,13 +1,11 @@
 export const portfolio = {
   name: "Parth Khunteta",
   nav: [
-    ["Work", "experience"],
-    ["Projects", "projects"],
-    ["Skills", "skills"],
-    ["Contact", "contact"],
+    { id: "experience", labelId: "nav.work" },
+    { id: "projects", labelId: "nav.projects" },
+    { id: "skills", labelId: "nav.skills" },
+    { id: "contact", labelId: "nav.contact" },
   ],
-  about:
-    "I’m Parth — a software engineer who builds thoughtful products across the full stack. Currently a full-stack engineer on LX-Studio, Skillsoft’s AI-enabled authoring platform, I build the Skill Assessment module from assessment authoring and skill-based scoring to publishing custom benchmarks.",
   marquee: [
     "React",
     "TypeScript",
@@ -23,71 +21,74 @@ export const portfolio = {
     "SASS",
   ],
   stats: [
-    [7, "+", "Years experience"],
-    [4, "", "Products shipped"],
-    [3, "", "AI projects live"],
+    { value: 7, suffix: "+", labelId: "stats.experience" },
+    { value: 4, suffix: "", labelId: "stats.products" },
+    { value: 3, suffix: "", labelId: "stats.ai" },
   ],
   jobs: [
     {
       company: "Skillsoft",
-      location: "Hyderabad, India",
-      roles: [["Senior Software Engineer", "Mar 2025 – Present"]],
-      points: [
-        "Own full-stack development of the Skill Assessment module in LX-Studio, from assessment creation through skill-based scoring to publishing.",
-        "Build custom skill benchmarks and agentic workflows that guide authors through assessment creation.",
-        "Refine authoring UX and integrate React interfaces with Python and Node.js services across the platform.",
+      locationId: "job.skillsoft.location",
+      roles: [
+        {
+          titleId: "job.skillsoft.role0",
+          datesId: "job.skillsoft.dates0",
+        },
+      ],
+      pointIds: [
+        "job.skillsoft.point0",
+        "job.skillsoft.point1",
+        "job.skillsoft.point2",
       ],
     },
     {
       company: "iCIMS",
-      location: "Hyderabad, India",
+      locationId: "job.icims.location",
       roles: [
-        ["Senior Software Engineer", "Mar 2024 – Apr 2025"],
-        ["Software Engineer", "Apr 2022 – Feb 2024"],
+        { titleId: "job.icims.role0", datesId: "job.icims.dates0" },
+        { titleId: "job.icims.role1", datesId: "job.icims.dates1" },
       ],
-      points: [
-        "Developed Hiring Suite features for career sites that manage candidate applications end to end.",
-        "Designed REST APIs and external-service integrations with a focus on robustness, security, and data consistency.",
-        "Improved reliability through testing, profiling, and production issue resolution.",
-      ],
+      pointIds: ["job.icims.point0", "job.icims.point1", "job.icims.point2"],
       stack: "Java · JavaScript · React · SASS · MySQL · AWS",
     },
     {
       company: "GlobalLogic",
-      location: "Chennai, India",
+      locationId: "job.globallogic.location",
       roles: [
-        ["Senior Software Engineer", "Jan 2022 – Apr 2022"],
-        ["Software Engineer", "Aug 2020 – Dec 2021"],
-        ["Associate / Trainee SE", "Jul 2019 – Jul 2020"],
+        {
+          titleId: "job.globallogic.role0",
+          datesId: "job.globallogic.dates0",
+        },
+        {
+          titleId: "job.globallogic.role1",
+          datesId: "job.globallogic.dates1",
+        },
+        {
+          titleId: "job.globallogic.role2",
+          datesId: "job.globallogic.dates2",
+        },
       ],
-      points: [
-        "Developed reusable UI components for Ericsson white-label client deployments.",
-        "Contributed features, fixes, and test coverage to the iCIMS Hiring Suite.",
-      ],
+      pointIds: ["job.globallogic.point0", "job.globallogic.point1"],
       stack: "Java · JavaScript · React · AngularJS · HTML · CSS",
     },
   ],
   projects: [
     {
-      category: "Retrieval · RAG",
       name: "KnowledgeDock",
-      visual: "KD",
+      categoryId: "project.kd.category",
+      descriptionId: "project.kd.description",
       tag: "retrieval.rag",
       kind: "kd",
-      description:
-        "Ask questions about lecture transcripts and get grounded answers with timestamped citations. Hybrid RAG blends semantic and keyword retrieval with self-correcting guardrails.",
       stack: ["React", "Vite", "Node/Express", "LangGraph", "OpenAI", "Qdrant"],
       live: "https://knowledge-dock.vercel.app/",
       code: "https://github.com/PARTHKHUNTETA/TRANSCRIPT-CHAT",
     },
     {
-      category: "Agents · Tool use",
       name: "Devmind AI",
-      visual: "DM",
+      categoryId: "project.dm.category",
+      descriptionId: "project.dm.description",
       tag: "agents.tooluse",
       kind: "dm",
-      description:
-        "An assistant that decides when to search the web, streams tool progress live, and lets conversations branch into independent threads with full auth and persistence.",
       stack: [
         "Next.js",
         "TypeScript",
@@ -100,22 +101,20 @@ export const portfolio = {
       code: "https://github.com/PARTHKHUNTETA/devmind-ai",
     },
     {
-      category: "Orchestration",
       name: "SelfAssistant",
-      visual: "SA",
+      categoryId: "project.sa.category",
+      descriptionId: "project.sa.description",
       tag: "orchestration",
       kind: "sa",
-      description:
-        "Sends one prompt to OpenAI, Gemini, and Mistral in parallel, streams every answer, then synthesizes a single best response with an evaluator model.",
       stack: ["React", "Vite", "Node", "SSE", "OpenAI", "Gemini", "Mistral"],
       live: "https://llm-orchestration.netlify.app/",
       code: "https://github.com/PARTHKHUNTETA/LLM-Orchestration",
     },
   ],
   skills: [
-    [
-      "Languages",
-      [
+    {
+      categoryId: "skills.languages",
+      items: [
         "JavaScript (ES6+)",
         "TypeScript",
         "Python",
@@ -124,10 +123,10 @@ export const portfolio = {
         "CSS3 / SASS",
         "SQL",
       ],
-    ],
-    [
-      "Frontend",
-      [
+    },
+    {
+      categoryId: "skills.frontend",
+      items: [
         "React",
         "Redux",
         "React Hooks",
@@ -136,10 +135,10 @@ export const portfolio = {
         "Responsive design",
         "Accessibility",
       ],
-    ],
-    [
-      "Backend & Data",
-      [
+    },
+    {
+      categoryId: "skills.backend",
+      items: [
         "Node.js",
         "Express",
         "Spring Boot",
@@ -148,10 +147,10 @@ export const portfolio = {
         "MySQL",
         "MongoDB",
       ],
-    ],
-    [
-      "Testing & Quality",
-      [
+    },
+    {
+      categoryId: "skills.testing",
+      items: [
         "Jest",
         "React Testing Library",
         "Unit & integration",
@@ -159,10 +158,10 @@ export const portfolio = {
         "JProfiler",
         "Postman",
       ],
-    ],
-    [
-      "Cloud, Tools & AI",
-      [
+    },
+    {
+      categoryId: "skills.cloud",
+      items: [
         "AWS",
         "Docker",
         "Git",
@@ -171,9 +170,11 @@ export const portfolio = {
         "LLM content generation",
         "Prompt design",
       ],
-    ],
+    },
   ],
-  education: ["SRM Institute of Science and Technology", "Graduated July 2019"],
+  education: {
+    school: "SRM Institute of Science and Technology",
+  },
   contact: {
     email: "parthkhunteta96@gmail.com",
     phone: "+91 XXXX XXXX",

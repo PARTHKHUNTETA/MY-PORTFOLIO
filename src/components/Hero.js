@@ -1,4 +1,7 @@
+import { FormattedMessage, useIntl } from "react-intl";
 import { portfolio } from "../utils/content";
+import { SUPPORTED_LOCALES } from "../i18n/locales";
+import { useLocale } from "../i18n/LocaleProvider";
 
 function Cube({ size, light, mid, dark, style }) {
   const s = size;
@@ -36,6 +39,8 @@ function Cube({ size, light, mid, dark, style }) {
 }
 
 export function Hero({ theme, toggleTheme }) {
+  const intl = useIntl();
+  const { locale, setLocale } = useLocale();
   const { linkedin, github, email } = portfolio.contact;
 
   return (
@@ -45,57 +50,78 @@ export function Hero({ theme, toggleTheme }) {
         <div className="glow-orb hero-orb-2" />
         <div className="grain" />
 
-        <div
-          className="hero-cube hero-cube-lg"
-          style={{ "--r": "-12deg" }}
-        >
+        <div className="hero-cube hero-cube-lg" style={{ "--r": "-12deg" }}>
           <Cube size={96} light="#F09155" mid="#D9622C" dark="#B04A1E" />
         </div>
-        <div
-          className="hero-cube hero-cube-md"
-          style={{ "--r": "18deg" }}
-        >
+        <div className="hero-cube hero-cube-md" style={{ "--r": "18deg" }}>
           <Cube size={64} light="#F09155" mid="#D9622C" dark="#B04A1E" />
         </div>
-        <div
-          className="hero-cube hero-cube-sm"
-          style={{ "--r": "-8deg" }}
-        >
+        <div className="hero-cube hero-cube-sm" style={{ "--r": "-8deg" }}>
           <Cube size={40} light="#F0A56E" mid="#E86A33" dark="#C4551F" />
         </div>
 
         <header className="hero-topbar">
-          <button aria-label="Menu" className="hero-menu">
+          <button
+            aria-label={intl.formatMessage({ id: "a11y.menu" })}
+            className="hero-menu"
+          >
             <span />
             <span />
             <span className="short" />
           </button>
-          <a className="brand" href="#home" aria-label="Parth Khunteta home">
+          <a
+            className="brand"
+            href="#home"
+            aria-label={intl.formatMessage({ id: "a11y.home" })}
+          >
             Parth<span>Khunteta</span>
           </a>
-          <nav className="nav" aria-label="Primary">
-            {portfolio.nav.map(([label, id]) => (
+          <nav
+            className="nav"
+            aria-label={intl.formatMessage({ id: "nav.primary" })}
+          >
+            {portfolio.nav.map(({ id, labelId }) => (
               <a key={id} href={`#${id}`} className="nav-link" data-target={id}>
-                {label}
+                <FormattedMessage id={labelId} />
               </a>
             ))}
           </nav>
-          <button
-            type="button"
-            className={`theme-toggle${theme === "light" ? " is-on" : ""}`}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            onClick={toggleTheme}
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z"
-                fill="currentColor"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+          <div className="hero-controls">
+            <label className="locale-switch">
+              <span className="sr-only">
+                <FormattedMessage id="a11y.language" />
+              </span>
+              <select
+                value={locale}
+                onChange={(event) => setLocale(event.target.value)}
+                aria-label={intl.formatMessage({ id: "a11y.language" })}
+              >
+                {SUPPORTED_LOCALES.map(({ code, label }) => (
+                  <option key={code} value={code}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              type="button"
+              className={`theme-toggle${theme === "light" ? " is-on" : ""}`}
+              aria-label={intl.formatMessage({
+                id: theme === "dark" ? "a11y.themeToLight" : "a11y.themeToDark",
+              })}
+              onClick={toggleTheme}
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </header>
 
         <div className="hero-body">
@@ -112,23 +138,38 @@ export function Hero({ theme, toggleTheme }) {
           <div className="hero-copy">
             <div className="eyebrow hero-anim" style={{ animationDelay: "0.05s" }}>
               <span />
-              Hello
+              <FormattedMessage id="hero.hello" />
             </div>
             <h1 className="hero-anim" style={{ animationDelay: "0.18s" }}>
-              I'm <strong>Parth
-              <br />
-              Khunteta</strong>
+              <FormattedMessage
+                id="hero.title"
+                values={{
+                  name: (
+                    <strong>
+                      Parth
+                      <br />
+                      Khunteta
+                    </strong>
+                  ),
+                }}
+              />
             </h1>
-            <p className="hero-tagline hero-anim" style={{ animationDelay: "0.32s" }}>
-              Senior Software Engineer — full-stack across React &amp;
-              TypeScript, Node.js, Python and Java. Based in Hyderabad, India.
+            <p
+              className="hero-tagline hero-anim"
+              style={{ animationDelay: "0.32s" }}
+            >
+              <FormattedMessage id="hero.tagline" />
             </p>
-            <div className="hero-actions hero-anim" style={{ animationDelay: "0.46s" }}>
+            <div
+              className="hero-actions hero-anim"
+              style={{ animationDelay: "0.46s" }}
+            >
               <a className="button" href="#contact" data-magnetic="">
-                Get in touch
+                <FormattedMessage id="hero.cta" />
               </a>
               <a className="text-link" href="#experience" data-magnetic="">
-                View work <span aria-hidden="true">→</span>
+                <FormattedMessage id="hero.viewWork" />{" "}
+                <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -152,7 +193,9 @@ export function Hero({ theme, toggleTheme }) {
         </div>
 
         <div className="scroll-cue">
-          <span>Scroll down</span>
+          <span>
+            <FormattedMessage id="hero.scroll" />
+          </span>
           <div className="scroll-cue-track">
             <span />
           </div>

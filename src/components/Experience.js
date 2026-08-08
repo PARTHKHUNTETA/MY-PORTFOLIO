@@ -1,42 +1,49 @@
+import { FormattedMessage, useIntl } from "react-intl";
 import { portfolio } from "../utils/content";
 import { SectionLabel, useReveal } from "./SectionUtils";
 
 export function Experience() {
   useReveal();
+  const intl = useIntl();
 
   return (
     <section className="section" id="experience">
       <div className="container">
-        <SectionLabel>Experience</SectionLabel>
+        <SectionLabel>
+          <FormattedMessage id="experience.label" />
+        </SectionLabel>
         <div className="experience-list">
           {portfolio.jobs.map((job) => (
             <article className="job reveal" key={job.company}>
               <div className="job-company">
                 <h3>{job.company}</h3>
-                <p>{job.location}</p>
+                <p>{intl.formatMessage({ id: job.locationId })}</p>
               </div>
               <div className="job-detail">
                 <div className="roles">
-                  {job.roles.map(([title, dates]) => (
-                    <div key={title}>
-                      <h4>{title}</h4>
-                      <p>{dates}</p>
+                  {job.roles.map(({ titleId, datesId }) => (
+                    <div key={titleId}>
+                      <h4>{intl.formatMessage({ id: titleId })}</h4>
+                      <p>{intl.formatMessage({ id: datesId })}</p>
                     </div>
                   ))}
                 </div>
                 <ul>
-                  {job.points.map((point) => (
-                    <li key={point}>
+                  {job.pointIds.map((pointId) => (
+                    <li key={pointId}>
                       <span className="bullet" aria-hidden="true">
                         ▸
                       </span>
-                      <span>{point}</span>
+                      <span>{intl.formatMessage({ id: pointId })}</span>
                     </li>
                   ))}
                 </ul>
                 {job.stack && (
                   <p className="job-stack">
-                    <span>Stack:</span> {job.stack}
+                    <span>
+                      <FormattedMessage id="experience.stack" />
+                    </span>{" "}
+                    {job.stack}
                   </p>
                 )}
               </div>
