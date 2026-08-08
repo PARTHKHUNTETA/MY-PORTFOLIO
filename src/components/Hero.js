@@ -35,7 +35,7 @@ function Cube({ size, light, mid, dark, style }) {
   );
 }
 
-export function Hero() {
+export function Hero({ theme, toggleTheme }) {
   const { linkedin, github, email } = portfolio.contact;
 
   return (
@@ -80,6 +80,22 @@ export function Hero() {
               </a>
             ))}
           </nav>
+          <button
+            type="button"
+            className={`theme-toggle${theme === "light" ? " is-on" : ""}`}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            onClick={toggleTheme}
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z"
+                fill="currentColor"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </header>
 
         <div className="hero-body">
