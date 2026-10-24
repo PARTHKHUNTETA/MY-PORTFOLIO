@@ -60,6 +60,8 @@
   "project.dm.description": "An assistant that decides when to search the web, streams tool progress live, and lets conversations branch into independent threads with full auth and persistence.",
   "project.sa.category": "Orchestration",
   "project.sa.description": "Sends one prompt to OpenAI, Gemini, and Mistral in parallel, streams every answer, then synthesizes a single best response with an evaluator model.",
+  "project.pf.category": "Personal site",
+  "project.pf.description": "This portfolio — a React site with light and dark themes, five languages, and sections for work, projects, and skills. The source is this repository.",
   "skills.label": "Technical skills",
   "skills.languages": "Languages",
   "skills.frontend": "Frontend",

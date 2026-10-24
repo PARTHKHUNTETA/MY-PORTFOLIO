@@ -60,6 +60,8 @@
   "project.dm.description": "एक असिस्टेंट जो तय करता है कब वेब सर्च करना है, टूल प्रोग्रेस लाइव स्ट्रीम करता है, और बातचीत को अलग थ्रेड्स में ब्रांच करने देता है — पूर्ण auth और persistence के साथ।",
   "project.sa.category": "Orchestration",
   "project.sa.description": "एक प्रॉम्प्ट को OpenAI, Gemini और Mistral को समानांतर भेजता है, हर उत्तर स्ट्रीम करता है, फिर evaluator मॉडल से एक सर्वश्रेष्ठ उत्तर बनाता है।",
+  "project.pf.category": "पर्सनल साइट",
+  "project.pf.description": "यह पोर्टफोलियो — React साइट जिसमें लाइट और डार्क थीम, पाँच भाषाएँ, और काम, प्रोजेक्ट्स व स्किल्स के सेक्शन हैं। सोर्स इसी रिपॉज़िटरी में है।",
   "skills.label": "तकनीकी स्किल्स",
   "skills.languages": "भाषाएँ",
   "skills.frontend": "फ्रंटएंड",

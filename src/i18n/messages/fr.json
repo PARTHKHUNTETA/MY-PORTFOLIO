@@ -60,6 +60,8 @@
   "project.dm.description": "Un assistant qui décide quand chercher sur le web, diffuse la progression des outils en direct et permet de ramifier les conversations en fils indépendants avec auth et persistance complètes.",
   "project.sa.category": "Orchestration",
   "project.sa.description": "Envoie un prompt à OpenAI, Gemini et Mistral en parallèle, diffuse chaque réponse, puis synthétise la meilleure avec un modèle évaluateur.",
+  "project.pf.category": "Site personnel",
+  "project.pf.description": "Ce portfolio — un site React avec thèmes clair et sombre, cinq langues, et des sections travail, projets et compétences. Le code source est dans ce dépôt.",
   "skills.label": "Compétences techniques",
   "skills.languages": "Langages",
   "skills.frontend": "Frontend",

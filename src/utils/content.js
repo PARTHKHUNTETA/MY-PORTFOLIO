@@ -110,6 +110,15 @@ export const portfolio = {
       live: "https://llm-orchestration.netlify.app/",
       code: "https://github.com/PARTHKHUNTETA/LLM-Orchestration",
     },
+    {
+      name: "Portfolio",
+      categoryId: "project.pf.category",
+      descriptionId: "project.pf.description",
+      tag: "site.source",
+      kind: "pf",
+      stack: ["React", "Webpack", "react-intl", "CSS", "Netlify"],
+      code: "https://github.com/PARTHKHUNTETA/MY-PORTFOLIO",
+    },
   ],
   skills: [
     {

@@ -25,6 +25,28 @@ function ProjectDiagram({ kind }) {
     );
   }
 
+  if (kind === "pf") {
+    return (
+      <div className="diagram diagram-pf">
+        <div className="diagram-col diagram-col-tight">
+          <span className="node small">en · hi</span>
+          <span className="node small">es · fr</span>
+        </div>
+        <div className="wire">
+          <span className="dot" />
+        </div>
+        <span className="node pulse">i18n</span>
+        <div className="wire">
+          <span className="dot dot-delay" />
+        </div>
+        <div className="diagram-col">
+          <span className="node text">theme</span>
+          <span className="node muted">light · dark</span>
+        </div>
+      </div>
+    );
+  }
+
   if (kind === "dm") {
     return (
       <div className="diagram diagram-dm">
@@ -118,14 +140,16 @@ export function Projects() {
                   ))}
                 </div>
                 <div className="project-links">
-                  <a
-                    className="button"
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FormattedMessage id="projects.live" />
-                  </a>
+                  {project.live ? (
+                    <a
+                      className="button"
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FormattedMessage id="projects.live" />
+                    </a>
+                  ) : null}
                   <a
                     className="button ghost"
                     href={project.code}
