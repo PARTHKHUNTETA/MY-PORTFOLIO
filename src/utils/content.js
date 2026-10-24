@@ -17,7 +17,8 @@ export const portfolio = {
     "AWS",
     "PostgreSQL",
     "Docker",
-    "Redux",
+    "Redux Toolkit",
+    "WCAG",
     "SASS",
   ],
   stats: [
@@ -40,6 +41,7 @@ export const portfolio = {
         "job.skillsoft.point1",
         "job.skillsoft.point2",
       ],
+      stack: "React · TypeScript · Python · Node.js",
     },
     {
       company: "iCIMS",
@@ -49,7 +51,7 @@ export const portfolio = {
         { titleId: "job.icims.role1", datesId: "job.icims.dates1" },
       ],
       pointIds: ["job.icims.point0", "job.icims.point1", "job.icims.point2"],
-      stack: "Java · JavaScript · React · SASS · MySQL · AWS",
+      stack: "JavaScript · React · Redux Toolkit · SASS · Java · MySQL · AWS",
     },
     {
       company: "GlobalLogic",
@@ -138,12 +140,13 @@ export const portfolio = {
       categoryId: "skills.frontend",
       items: [
         "React",
-        "Redux",
+        "Redux Toolkit",
         "React Hooks",
         "AngularJS",
         "Webpack",
+        "Micro frontends",
         "Responsive design",
-        "Accessibility",
+        "WCAG / ARIA",
       ],
     },
     {
@@ -167,6 +170,7 @@ export const portfolio = {
         "JMeter",
         "JProfiler",
         "Postman",
+        "Grafana",
       ],
     },
     {
@@ -177,8 +181,10 @@ export const portfolio = {
         "Git",
         "CI/CD",
         "Agile",
+        "Agentic workflows",
         "LLM content generation",
         "Prompt design",
+        "LLM guardrails",
       ],
     },
   ],
@@ -187,7 +193,7 @@ export const portfolio = {
   },
   contact: {
     email: "parthkhunteta96@gmail.com",
-    phone: "+91 XXXX XXXX",
+    phone: "+91 98403 85082",
     linkedin: {
       label: "in/parthkhunteta",
       href: "https://www.linkedin.com/in/parthkhunteta",
