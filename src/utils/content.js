@@ -74,6 +74,16 @@ export const portfolio = {
   ],
   projects: [
     {
+      name: "Make My Marriage",
+      categoryId: "project.mm.category",
+      descriptionId: "project.mm.description",
+      tag: "wedding.os",
+      kind: "mm",
+      stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind", "Cloudflare R2"],
+      live: "https://www.makemarriage.shop/",
+      code: "https://github.com/PARTHKHUNTETA/make-my-marriage",
+    },
+    {
       name: "KnowledgeDock",
       categoryId: "project.kd.category",
       descriptionId: "project.kd.description",
@@ -109,15 +119,6 @@ export const portfolio = {
       stack: ["React", "Vite", "Node", "SSE", "OpenAI", "Gemini", "Mistral"],
       live: "https://llm-orchestration.netlify.app/",
       code: "https://github.com/PARTHKHUNTETA/LLM-Orchestration",
-    },
-    {
-      name: "Portfolio",
-      categoryId: "project.pf.category",
-      descriptionId: "project.pf.description",
-      tag: "site.source",
-      kind: "pf",
-      stack: ["React", "Webpack", "react-intl", "CSS", "Netlify"],
-      code: "https://github.com/PARTHKHUNTETA/MY-PORTFOLIO",
     },
   ],
   skills: [

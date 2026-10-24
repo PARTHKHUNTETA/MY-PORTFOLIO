@@ -3,6 +3,29 @@ import { portfolio } from "../utils/content";
 import { SectionLabel, useReveal } from "./SectionUtils";
 
 function ProjectDiagram({ kind }) {
+  if (kind === "mm") {
+    return (
+      <div className="diagram diagram-mm">
+        <div className="diagram-col diagram-col-tight">
+          <span className="node small">events</span>
+          <span className="node small">guests</span>
+          <span className="node small">budget</span>
+        </div>
+        <div className="wire">
+          <span className="dot" />
+        </div>
+        <span className="node pulse">wedding</span>
+        <div className="wire">
+          <span className="dot dot-delay" />
+        </div>
+        <div className="diagram-col">
+          <span className="node text">custom site</span>
+          <span className="node muted">login required</span>
+        </div>
+      </div>
+    );
+  }
+
   if (kind === "kd") {
     return (
       <div className="diagram diagram-kd">
@@ -20,28 +43,6 @@ function ProjectDiagram({ kind }) {
         <div className="diagram-col">
           <span className="node text">grounded answer</span>
           <span className="node muted">[1] 04:12 · [2] 11:38</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (kind === "pf") {
-    return (
-      <div className="diagram diagram-pf">
-        <div className="diagram-col diagram-col-tight">
-          <span className="node small">en · hi</span>
-          <span className="node small">es · fr</span>
-        </div>
-        <div className="wire">
-          <span className="dot" />
-        </div>
-        <span className="node pulse">i18n</span>
-        <div className="wire">
-          <span className="dot dot-delay" />
-        </div>
-        <div className="diagram-col">
-          <span className="node text">theme</span>
-          <span className="node muted">light · dark</span>
         </div>
       </div>
     );
